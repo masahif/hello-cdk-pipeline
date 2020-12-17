@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.8
+    commands:
+      - |
+        CDK_VERSION=1.76.0
+        echo Instaling packages started..
+        python3 -m pip install -e .
+        npm install -g aws-cdk@${CDK_VERSION}
+
+  build:
+    commands:
+      - |
+        echo Translating into cloudformation started..
+        cdk synth aws-cdk-fargate-batch
+
+artifacts:
+  base-directory: cdk.out
+  files: '**/*'
