@@ -22,6 +22,7 @@ setuptools.setup(
         "boto3",
         "aws-cdk.core==1.76.0",
         "aws_cdk.aws_iam==1.76.0",
+        "aws_cdk.aws_s3==1.76.0",
         "aws_cdk.aws_codepipeline_actions==1.76.0",
         "aws_cdk.aws_codepipeline==1.76.0",
         "aws_cdk.aws_codebuild==1.76.0",

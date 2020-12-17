@@ -1,3 +1,5 @@
 # hello-cdk-pipeline
 
-※ https://qiita.com/joe-king-sh/items/fbd6e185632adf75a1a3 を参考にさせてもらいました
+## パーソナルアクセストークンの追加
+aws codebuild import-source-credentials --server-type GITHUB --auth-type PERSONAL_ACCESS_TOKEN --token __TOKEN__
+
