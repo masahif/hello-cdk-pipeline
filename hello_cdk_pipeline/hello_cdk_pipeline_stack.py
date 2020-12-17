@@ -39,6 +39,7 @@ class HelloCdkPipelineStack(core.Stack):
             action_name='source_collect_action_from_github',
             owner=owner,
             repo=repo,
+            branch=branch,
             trigger=aws_codepipeline_actions.GitHubTrigger.POLL,
             oauth_token=core.SecretValue.plain_text(oauth_token),
             output=source_output
