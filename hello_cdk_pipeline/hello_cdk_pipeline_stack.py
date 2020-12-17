@@ -20,8 +20,8 @@ class HelloCdkPipelineStack(core.Stack):
         # ========================================
         codepipeline = aws_codepipeline.Pipeline(
             self,
-            id='sample_pipeline',
-            pipeline_name='sample_pipeline',
+            id='hello-cdk-pipeline',
+            pipeline_name='hello-cdk-pipeline',
         )
 
 
@@ -64,7 +64,7 @@ class HelloCdkPipelineStack(core.Stack):
         project.add_to_role_policy(
             aws_iam.PolicyStatement(
                 resources=['*'],
-                actions=['ssm:GetParameters']
+                actions=['ssm:GetParameters', "kms:Decrypt"]
             )
         )
 
