@@ -15,7 +15,7 @@ phases:
     commands:
       - |
         echo Translating into cloudformation started..
-        cdk synth aws-cdk-fargate-batch
+        cdk synth hello-cdk
 
 artifacts:
   base-directory: cdk.out
