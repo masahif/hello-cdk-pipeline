@@ -57,24 +57,24 @@ class HelloCdkPipelineStack(core.Stack):
         project = aws_codebuild.PipelineProject(
             self,
             id='build_project',
-            project_name='build_project'
+            project_name='hello-cdk-build-project'
         )
 
         # Add policies to code build role to allow access to the Parameter store.
         project.add_to_role_policy(
             aws_iam.PolicyStatement(
                 resources=['*'],
-                actions=['ssm:GetParameters', "kms:Decrypt"]
+                actions=['ssm:GetParameter*', "secretsmanager:GetSecretValue", "kms:Decrypt"],
             )
         )
 
         # Add build stage to my pipeline.
         build_output = aws_codepipeline.Artifact('build_output')
         codepipeline.add_stage(
-            stage_name='Build',
+            stage_name='hello-cdk-build-stage',
             actions=[
                 aws_codepipeline_actions.CodeBuildAction(
-                    action_name='CodeBuild',
+                    action_name='hello-cdk-build-action',
                     project=project,
                     input=source_output,
                     outputs=[build_output]
