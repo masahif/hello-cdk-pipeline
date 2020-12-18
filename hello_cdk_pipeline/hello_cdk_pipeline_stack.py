@@ -9,7 +9,7 @@ from aws_cdk import aws_s3
 import boto3
 import os
 
-class HelloCdkPipelineStack(core.Stack):
+class HelloCdkCodeBuildStack(core.Stack):
 
     def __init__(self, scope: core.Construct, id: str, deploy_stack: core.Stack, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
@@ -73,7 +73,25 @@ class HelloCdkPipelineStack(core.Stack):
         )
         bucket.grant_read_write(project)
 
-class _HelloCdkPipelineStack(core.Stack):
+        # codepipeline = aws_codepipeline.Pipeline(
+        #     self,
+        #     id='hello-cdk-pipeline',
+        #     pipeline_name='hello-cdk-pipeline',
+        # )
+
+        # source_action = aws_codepipeline_actions.S3SourceAction(
+        #     action_name='fetch_source_from_s3',
+        #     bucket=bucket,
+        #     bucket_key="artifacts/test",
+        #     trigger=aws_codepipeline_actions.S3Trigger.POLL,
+        # )
+        # bucket.grant_read_write(source_action)
+        # pipeline.add_stage(
+        #     stage_name="source",
+        #     actions=[source_action],
+        # )
+
+class HelloCdkPipelineStack(core.Stack):
 
     def __init__(self, scope: core.Construct, id: str, deploy_stack: core.Stack, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
